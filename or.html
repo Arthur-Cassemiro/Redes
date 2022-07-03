@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Base</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div>
+          <h1 id="o_que_e_onion_routing">O que é onion routing</h1>
+          <p>
+            O onion routing é uma técnica para comunicação anônima em uma rede
+            de computadores. Em onion routing , as mensagens são encapsuladas em
+            camadas de criptografia, análogas às camadas de uma cebola.
+          </p>
+          <p>
+            O programa Onion Routing é composto por projetos que pesquisam,
+            projetam, constroem e analisam sistemas de comunicação anônimos. O
+            foco está em sistemas práticos para conexões baseadas na Internet de
+            baixa latência que resistem à análise de tráfego, espionagem e
+            outros ataques, tanto de forasteiros (por exemplo, roteadores de
+            Internet) quanto internos (os próprios servidores Onion Routing). O
+            Onion Routing impede que o meio de transporte saiba quem está se
+            comunicando com quem - a rede sabe apenas que a comunicação está
+            ocorrendo. Além disso, o conteúdo da comunicação é ocultado de
+            bisbilhoteiros até o ponto em que o tráfego sai da rede.
+          </p>
+          <p>
+            Quando é feita uma solicitação na Internet em um navegador normal,
+            como chrome, firefox, etc, é solicitado páginas da Web fazendo
+            solicitações GET simples para servidores sem nenhum intermediário. É
+            apenas uma única conexão entre um cliente e um servidor e alguém
+            verificando sua rede pode saber qual servidor seu computador está
+            contatando.
+          </p>
+          <p>
+            O onion routing faz isso de maneira diferente. Nele, a conexão é
+            mantida entre diferentes nós, ou seja, a conexão pula de um servidor
+            para outro e quando chega ao último servidor neste circuito é o
+            servidor que queríamos entrar em contato e ele processará nossa
+            solicitação e nos atenderá o desejado página da web que é enviada de
+            volta para nós usando a mesma rede de nós.
+          </p>
+          <p>
+            O cliente tem acesso a todas as chaves mas os servidores só têm
+            acesso às chaves específicas para encriptação/desencriptação desse
+            servidor. Como esse processo envolve sua mensagem em camadas de
+            criptografia que precisam ser removidas em cada salto diferente,
+            como uma cebola, é por isso que é chamado de "roteamento de cebola".
+          </p>
+        </div>
+        <div>
+          <h1 id="estrutura_de_dados">Estrutura de dados</h1>
+          <p>
+            De forma simplificada, os dados a serem trnasmitidos são
+            encapsulados em cada nó de transmissão com uma criptografia
+            adicional, criando uma sucessão de criptografias até chgar no nó
+            final. A mensagem permanece escondida em todas as transferências, só
+            sendo desciptografada no nó final e como os nós centras não sabem
+            nem o trajeto, nem que emitiu a mensagem e quem recebeu, essa
+            técnica permite que o emissor fique anônimo.
+          </p>
+          <p>
+            Nesse roteamento, o originador seleciona um conjunto de nós de uma
+            lista fornecida por um "nó de diretório". Os nós escolhidos são
+            dispostos em um caminho, chamado de "cadeia" ou "circuito", através
+            do qual a mensagem será transmitida. Para preservar o anonimato do
+            remetente, nenhum nó no circuito é capaz de dizer se o nó antes dele
+            é o originador ou outro intermediário como ele. Da mesma forma,
+            nenhum nó no circuito é capaz de dizer quantos outros nós estão no
+            circuito e apenas o nó final, o "nó de saída", é capaz de determinar
+            sua própria localização na cadeia.
+          </p>
+          <p>
+            Usando criptografia de chave assimétrica, o originador obtém uma
+            chave pública do nó do diretório para enviar uma mensagem
+            criptografada ao primeiro nó ("entrada"), estabelecendo uma conexão
+            e um segredo compartilhado ("chave de sessão"). Usando o link
+            criptografado estabelecido para o nó de entrada, o originador pode
+            então retransmitir uma mensagem através do primeiro nó para um
+            segundo nó na cadeia usando criptografia que somente o segundo nó, e
+            não o primeiro, pode descriptografar. Quando o segundo nó recebe a
+            mensagem, ele estabelece uma conexão com o primeiro nó. Enquanto
+            isso estende o link criptografado do originador, o segundo nó não
+            pode determinar se o primeiro nó é o originador ou apenas outro nó
+            no circuito. O originador pode então enviar uma mensagem através do
+            primeiro e segundo nós para um terceiro nó, criptografado de modo
+            que apenas o terceiro nó seja capaz de descriptografá-lo. O
+            terceiro, como o segundo, torna-se vinculado ao originador, mas se
+            conecta apenas ao segundo. Esse processo pode ser repetido para
+            construir cadeias cada vez maiores, mas normalmente é limitado para
+            preservar o desempenho.
+          </p>
+          <p>
+            Quando a cadeia estiver completa, o originador pode enviar dados
+            pela Internet anonimamente. Quando o destinatário final dos dados
+            envia os dados de volta, os nós intermediários mantêm o mesmo link
+            de volta ao originador, com os dados novamente em camadas, mas ao
+            contrário, de modo que o nó final desta vez adiciona a primeira
+            camada de criptografia e o primeiro nó adiciona a última camada de
+            criptografia antes de enviar os dados, por exemplo, uma página da
+            Web, para o originador, que pode descriptografar todas as camadas.
+          </p>
+        </div>
+
+        <div>
+          <h1 id="vulnerabilidades">Vulnerabilidades</h1>
+          <p>
+            A única falha de segurança no roteamento onion é que, se alguém
+            estiver escutando em um servidor ao mesmo tempo e corresponder a
+            solicitação no destino a uma solicitação feita por um cliente do
+            outro lado de uma rede, analisando o comprimento e a frequência de
+            os caracteres encontrados na solicitação ou resposta interceptada no
+            servidor de destino e usá-los para corresponder à mesma solicitação
+            feita por um cliente em uma fração de segundo (os carimbos de data e
+            hora em solicitações e respostas também podem ser úteis para deduzir
+            isso) e, em seguida, rastrear para baixo e conhecer sua atividade
+            online e quebrar a ideia de anonimato. Isso é bem difícil de fazer,
+            mas não impossível. Mas remover essa falha do Tor é praticamente
+            impossível.
+          </p>
+        </div>
+      </div>
+      <nav>
+        <ol>
+          <li>
+            <p>1. <a href="./index.html">Introdução</a></p>
+          </li>
+          <li>
+            <p>2. <a href="./internet.html">Anonimato na internet</a></p>
+            <ol>
+              <li>
+                <a href="./internet.html#o_que_e_a_internet">
+                  O que é a internet e como ela funciona?
+                </a>
+              </li>
+              <li>
+                <a href="./internet.html#anonimato_na_internet">
+                  O quão estamos anônimos na internet?
+                </a>
+              </li>
+              <li>
+                <a href="./internet.html#ferramentas_de_anonimato">
+                  Ferramentas de anonimato na internet.
+                </a>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <p>3. <a href="./or.html">Onion Routing</a></p>
+            <ol>
+              <li>
+                <a href="./or.html#o_que_e_onion_routing">
+                  O que é onion routing?
+                </a>
+              </li>
+              <li>
+                <a href="./or.html#estrutura_de_dados"> Estrutura de dados. </a>
+              </li>
+              <li>
+                <a href="./or.html#vulnerabilidades"> Vulnerabilidades. </a>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <p>4. <a href="./tor.html">Tor</a></p>
+            <ol>
+              <li>O que é tor?</li>
+              <li>Características e funcionamento.</li>
+              <li>Implementação.</li>
+              <li>Vulnerabilidades.</li>
+            </ol>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </body>
+</html>

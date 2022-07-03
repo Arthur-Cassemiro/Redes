@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Base</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <h1 id="o_que_e_tor">TOR</h1>
+        <p>
+          O nome Tor vem das iniciais de um projeto chamado "The Onion Router" e
+          foi uma ideia inicial do Laboratório de Pesquisa Naval dos Estados
+          Unidos. Esse projeto recebeu o apoio da Electronic Frontier Foundation
+          (EFF), que é uma das organizações que se dedica à defesa dos direitos
+          da Internet mais conhecidas do mundo.
+        </p>
+        <p>
+          O Onion Routing é uma rede de sobreposição distribuída projetada para
+          anonimizar aplicativos baseados em TCP, como navegação na web, shell
+          seguro e mensagens instantâneas. Os clientes escolhem um caminho
+          através da rede e constroem um circuito, no qual cada nó (ou “onion
+          router” ou “OR”) no caminho conhece seu predecessor e sucessor, mas
+          nenhum outro nó no circuito. o tráfego flui pelo circuito em células
+          de tamanho fixo, que são desempacotadas por uma chave simétrica em
+          cada nó (como as camadas de uma cebola) e retransmitidas a jusante.
+        </p>
+        <h1 id="caracteristicas_e_funcionamento">
+          Características e funcionamento
+        </h1>
+        <p>
+          O princípio do Tor se baseia em proteger o usuário de um adversário
+          capar de analisar o tráfego da rede, modificar, atrasar e cortar este
+          tráfego, controlar e comprometer nós da rede Tor (já que é aberta).
+          Dado este modelo, alguns outro requisitos também foram definidos:
+        </p>
+        <ul>
+          <li>
+            Facilidade de uso, uma rede com poucos usuários reduz a anonimização
+            proporcionada por ela,
+          </li>
+          <li>Baixo custo de operação dos nós,</li>
+          <li>Interoperabilidade,</li>
+          <li>
+            Simplicidade, não ser necessário modificar kernel, roteadores e ser
+            fácil de se implementar.
+          </li>
+        </ul>
+        <h1 id="implementacao">Implementação</h1>
+        <p>
+          Para anonimizar o uso da Internet, o Tor roteia o tráfego através de
+          vários servidores de retransmissão escolhidos aleatoriamente antes de
+          acessar o site de destino. Existem mais de 7.000 desses servidores,
+          que em sua maioria pertencem a voluntários. A solicitação é
+          criptografada várias vezes, portanto, os servidores de retransmissão
+          conhecem apenas a retransmissão anterior e a próxima, mas não o
+          conteúdo da solicitação ou o circuito completo. A solicitação de rede
+          finalmente sai da rede Tor em um nó de saída. Do ponto de vista do
+          site, você está navegando diretamente do nó de saída.
+        </p>
+        <h1 id="vulnerabilidades">Vulnerabilidades</h1>
+        <p>
+          Tor é projetado para total anonimato. Um nó singular não pode ter
+          acesso ao seu tráfego e endereço IP, o que significa que sua
+          identidade e atividade online na rede Onion nunca são divulgadas ao
+          mesmo tempo.
+        </p>
+        <p>
+          Embora o Tor seja anônimo, não é privado. Seu endereço IP pessoal é
+          visível para o nó de guarda e seu tráfego é visível para o nó de
+          saída. Em teoria, alguém executando um nó de saída pode espionar sua
+          atividade, embora não saiba a quem ela pertence.
+        </p>
+        <p>
+          O Tor fornece proteções de privacidade mais gerais do que um navegador
+          normal como o Google Chrome, incluindo DNS sobre HTTPS. Sua
+          localização está oculta e seu ISP não pode rastrear seu tráfego no
+          mesmo grau - embora ainda veja que você está usando a Rede Tor, que
+          pode marcá-lo para vigilância por alguns ISPs.
+        </p>
+        <p>
+          Apesar dessas proteções, ainda é possível que determinados grupos
+          vejam pelo menos parte de sua atividade de navegação. Vulnerabilidades
+          como vazamentos de dados ou nós de saída comprometidos significam que
+          é possível que alguns usuários sejam anônimos.
+        </p>
+      </div>
+      <nav>
+        <ol>
+          <li>
+            <p>1. <a href="./index.html">Introdução</a></p>
+          </li>
+          <li>
+            <p>2. <a href="./internet.html">Anonimato na internet</a></p>
+            <ol>
+              <li>
+                <a href="./internet.html#o_que_e_a_internet">
+                  O que é a internet e como ela funciona?
+                </a>
+              </li>
+              <li>
+                <a href="./internet.html#anonimato_na_internet">
+                  O quão estamos anônimos na internet?
+                </a>
+              </li>
+              <li>
+                <a href="./internet.html#ferramentas_de_anonimato">
+                  Ferramentas de anonimato na internet.
+                </a>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <p>3. <a href="./or.html">Onion Routing</a></p>
+            <ol>
+              <li>
+                <a href="./or.html#o_que_e_onion_routing">
+                  O que é onion routing?
+                </a>
+              </li>
+              <li>
+                <a href="./or.html#estrutura_de_dados"> Estrutura de dados. </a>
+              </li>
+              <li>
+                <a href="./or.html#vulnerabilidades"> Vulnerabilidades. </a>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <p>4. <a href="./tor.html">Tor</a></p>
+            <ol>
+              <li>
+                <a href="./or.html#o_que_e_tor"> O que é tor? </a>
+              </li>
+              <li>
+                <a href="./or.html#caracteristicas_e_funcionamento">
+                  Características e funcionamento.
+                </a>
+              </li>
+              <li>
+                <a href="./or.html#implementacao"> Implementação. </a>
+              </li>
+              <li>
+                <a href="./or.html#vulnerabilidades"> Vulnerabilidades. </a>
+              </li>
+            </ol>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </body>
+</html>
